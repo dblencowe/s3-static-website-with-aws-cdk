@@ -46,5 +46,7 @@ export class S3StaticWebsiteWithCdkStack extends cdk.Stack {
     new cdk.CfnOutput(this, 'Web Address', {
       value: distribution.distributionDomainName
     })
+
+    bucket.grantRead(cfOAI)
   }
 }
