@@ -1,8 +1,7 @@
-# Welcome to your CDK TypeScript project!
+# Host and deploy a static website using AWS CDK
 
-This is a blank project for TypeScript development with CDK.
-
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This project is an example of how to create the resources for and then deploy a static website, complete with SSL.
+This config is ideal for hosting an SPA frontend in S3.
 
 ## Useful commands
 

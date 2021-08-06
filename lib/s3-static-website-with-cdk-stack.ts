@@ -74,6 +74,5 @@ export class S3StaticWebsiteWithCdkStack extends cdk.Stack {
       distributionPaths: ['/index.html'],
     })
 
-
   }
 }
