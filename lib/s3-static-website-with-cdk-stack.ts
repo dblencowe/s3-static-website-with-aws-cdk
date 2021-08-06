@@ -2,6 +2,7 @@ import * as cdk from '@aws-cdk/core';
 import { RemovalPolicy } from '@aws-cdk/core';
 import { Bucket, HttpMethods } from "@aws-cdk/aws-s3";
 import { CloudFrontWebDistribution, OriginAccessIdentity } from "@aws-cdk/aws-cloudfront";
+import { BucketDeployment, Source } from "@aws-cdk/aws-s3-deployment";
 
 export class S3StaticWebsiteWithCdkStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -48,5 +49,14 @@ export class S3StaticWebsiteWithCdkStack extends cdk.Stack {
     })
 
     bucket.grantRead(cfOAI)
+
+    new BucketDeployment(this, 'WebsiteDeployment', {
+      sources: [Source.asset('services/frontend')],
+      destinationBucket: bucket,
+      distribution,
+      distributionPaths: ['/index.html'],
+    })
+
+
   }
 }
